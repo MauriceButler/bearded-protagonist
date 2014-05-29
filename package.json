@@ -1,0 +1,17 @@
+{
+  "name": "bearded-protagonist",
+  "version": "1.0.0",
+  "description": "",
+  "bin": {
+    "bpn": "index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^0.6.2",
+    "find-root": "^0.1.1"
+  }
+}
