@@ -1,17 +1,36 @@
 {
   "name": "bearded-protagonist",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.2",
+  "description": "An npm wrapper that checks your publish config before you attempt to publsh a package publicly",
   "bin": {
-    "bpn": "index.js"
+    "bpm": "index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "install": "node install.js"
   },
-  "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "colors": "^0.6.2",
     "find-root": "^0.1.1"
-  }
+  },
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/MauriceButler/bearded-protagonist.git"
+  },
+  "keywords": [
+    "npm",
+    "private",
+    "proxy",
+    "public",
+    "warning",
+    "stop"
+  ],
+  "author": "Maurice Butler <maurice.butler@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/MauriceButler/bearded-protagonist/issues"
+  },
+  "homepage": "https://github.com/MauriceButler/bearded-protagonist",
+  "preferGlobal": true
 }

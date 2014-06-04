@@ -5,8 +5,9 @@ var fs = require('fs'),
     findRoot = require('find-root'),
     readline = require('readline'),
     colors = require('colors'),
+    originalNpm = require('./package.json').originalNpm,
     cwd = process.cwd(),
-    exec = require('child_process').exec,
+    spawn = require('child_process').spawn,
     rl = readline.createInterface({
         input: process.stdin,
         output: process.stdout
@@ -15,6 +16,10 @@ var fs = require('fs'),
     isPub = args.some(function( arg){
         return arg.indexOf('pu') === 0;
     });
+
+if(!originalNpm){
+    throw 'unknown npm location';
+}
 
 if(!isPub){
     return continueCommand();
@@ -31,25 +36,23 @@ if(!packageJson.publishConfig){
     console.log('  !!!                                                             !!!'.rainbow);
     console.log('  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'.rainbow);
     console.log();
-    console.log('               Continue to publish this module? (y/n)'.yellow);
+    console.log('               Continue to publish this module? (y/N)'.yellow);
 
     rl.once('line', function(line){
+        rl.close();
         if(line.toString().charAt(0) !== 'y'){
-            console.log('Publish canceled'.green);
+            console.log('bpm ' + 'INFO: '.green + 'Publish canceled');
             process.kill();
         }else{
             continueCommand();
         }
-    })
+    });
 }else{
     continueCommand();
 }
 
 function continueCommand(){
-    var child = exec('npm ' + args.join(' '));
-
-    child.stderr.pipe(process.stderr);
-    child.stdout.pipe(process.stdout);
+    var child = spawn(originalNpm, args, { stdio: 'inherit' });
 
     child.on('exit', function(){
         process.kill();
