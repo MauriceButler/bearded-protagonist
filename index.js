@@ -55,6 +55,6 @@ function continueCommand(){
     var child = spawn(originalNpm, args, { stdio: 'inherit' });
 
     child.on('exit', function(){
-        process.kill();
+        process.exit();
     });
 }

@@ -1,6 +1,6 @@
 {
   "name": "bearded-protagonist",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "An npm wrapper that checks your publish config before you attempt to publsh a package publicly",
   "bin": {
     "bpm": "index.js"
